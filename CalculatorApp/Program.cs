@@ -59,32 +59,49 @@
                 calculatorfinished = exitcode;
                 if (calculatorfinished) break;
 
-                Console.WriteLine("Please input the operator that you want to use. Use the following operators: \n \n X to multiply \n / to divide \n - to subtract \n + to add.\n \n Type \"exit\" if you want to quit ");
-                var inputop = Console.ReadLine();
+                Console.WriteLine("\nPlease input the operator that you want to use. Use the following operators: \n \n X to multiply \n / to divide \n - to subtract \n + to add.\n \n Type \"exit\" if you want to quit ");
 
-                if (inputop.ToLower() == "x")
+                bool inputnumcalcfinished = false;
+
+                while (!inputnumcalcfinished)
                 {
-                    inputnum = inputnum * inputnum2;
-                    Console.WriteLine("\nResult is: " + inputnum);
-                }
-                else if (inputop == "/") 
-                {
-                    inputnum = inputnum / inputnum2;
-                    Console.WriteLine("\nResult is: " + inputnum);
-                }
-                else if (inputop == "+")
-                {
-                    inputnum = inputnum + inputnum2;
-                    Console.WriteLine("\nResult is: " + inputnum);
+                    var inputop = Console.ReadLine();
+
+                    if (inputop.ToLower() == "x")
+                    {
+                        inputnum = inputnum * inputnum2;
+                        Console.WriteLine("\nResult is: " + inputnum);
+                        inputnumcalcfinished = true;
+                    }
+                    else if (inputop == "/")
+                    {
+                        inputnum = inputnum / inputnum2;
+                        Console.WriteLine("\nResult is: " + inputnum);
+                        inputnumcalcfinished = true;
+                    }
+                    else if (inputop == "+")
+                    {
+                        inputnum = inputnum + inputnum2;
+                        Console.WriteLine("\nResult is: " + inputnum);
+                        inputnumcalcfinished = true;
+                    }
+
+                    else if (inputop == "-")
+                    {
+                        inputnum = inputnum - inputnum2;
+                        Console.WriteLine("\nResult is: " + inputnum);
+                        inputnumcalcfinished = true;
+                    }
+                    else if (inputop == "exit")
+                    {
+                        exitcode = true;
+                        break;
+                    }
+                    else Console.WriteLine("Please input a valid operator!"); 
                 }
 
-                else if (inputop == "-")
-                {
-                    inputnum = inputnum - inputnum2;
-                    Console.WriteLine("\nResult is: " + inputnum);
-                }
-                else if (inputop == "exit") break;
-                else continue;
+                calculatorfinished = exitcode;
+                if (calculatorfinished) break;
 
                 Console.WriteLine("\nPress enter to continue...");
                 Console.ReadKey();
